@@ -6,11 +6,11 @@ from PIL import Image
 import numpy as np
 
 # ================= CONFIGURATION =================
-BG_IMAGE = 'yb_2025_.png' 
+BG_IMAGE = 'yb_2025_new.png' 
 ICON_IMAGE = 'cyclone_icon.png'
 OUTPUT_NAME = 'sequential_cyclones.gif'
 
-TOTAL_FRAMES = 300 # Increased to give enough room for sequential movement
+TOTAL_FRAMES = 400 # Increased to give enough room for sequential movement
 FPS = 20          
 ICON_SIZE_PX = 100 
 
@@ -18,20 +18,20 @@ ICON_SIZE_PX = 100
 # 'start': frame number when it appears
 # 'duration': how many frames it takes to finish its track
 storm_settings = {
-    'red':    {'name': 'SCS Shakhti',   'start': 0,   'duration': 100},
-    'blue':   {'name': 'CS Ditwah', 'start': 50,  'duration': 100},
-    'green':  {'name': 'SCS Montha',   'start': 120, 'duration': 100},
-    'violet': {'name': 'CS Senyar',  'start': 180, 'duration': 100}
+    'red':    {'name': 'SCS Shakhti 01-07/10/25',   'start': 0,   'duration': 100},
+    'blue':   {'name': 'CS Ditwah 26/11-03/12/25', 'start': 200,  'duration': 100},#{'name': 'CS Ditwah', 'start': 50,  'duration': 100}
+    'green':  {'name': 'SCS Montha 25-30/10/25',   'start': 100, 'duration': 100},
+    'violet': {'name': 'CS Senyar 25-27/11/25',  'start': 300, 'duration': 100}
 }
 
 raw_tracks = {
-    'red': [(475, 1592), (514, 1566), (547, 1562), (584, 1507), (628, 1475), (646, 1435),(668,1402),(547,1373),(670,1400),(549,1376),(676,1306),(772,1266),(800,1241),(802,1251),(987,1304),(982,1274),(1067,1205),(1120,1192),(1205,1273)],
-    'blue': [(1544, 2119), (1640, 2129), (1708, 2014), (1656, 1948), (1661, 1728), (1544, 2119)],
-    'green': [(2222, 1848), (2115, 1861), (1869, 1751), (1762, 1630), (1690, 1565), (1631, 1535)],
-    'violet': [(3371, 1901), (3272, 1956), (3051, 2170), (2931, 2176), (2803, 2227), (2604, 2221)]
+    'red': [(928, 1679), (931, 1673), (956, 1669), (1000, 1608), (1001, 1608), (1024, 1601),(1029,1577),(1054,1540),(985,1545),(957,1527),(968,1516),(1073,1458),(1136,1438),(1161,1414),(1225,1423),(1307,1462),(1303,1442),(1371,1386),(1412,1379),(1482,1442)],
+    'blue': [(1749, 2124), (1835, 2119), (1885, 2066), (1883, 2035), (1838, 1990),(1829,1962),(1828,1866),(1849,1817),(1842,1802),(1836,1820),(1805,1835),(1777,1830)],
+    'green': [(2293, 1905), (2191, 1898), (2156, 1870), (2124, 1900), (2095, 1867), (2034, 1857),(2007,1814),(1975,1801),(1861,1665),(1854,1634),(1775,1523),(1787,1423)],
+    'violet': [(3203, 1938), (3091, 2006), (3029, 2113), (2961, 2149), (2869, 2164), (2828, 2190),(2604,2198),(2581,2170),(2626,2159),(2686,2170),]
 }
 # =================================================
-
+#(1544, 2119), (1640, 2129), (1708, 2014), (1656, 1948), (1661, 1728),
 # Pre-calculate smooth paths for each storm based on their specific duration
 smooth_tracks = {}
 for color, pts in raw_tracks.items():
